@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Employee>
+
+@if (Model.Count() > 0)
+{
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+            <th>@Html.DisplayNameFor(model => model.LastName)</th>
+            <th>@Html.DisplayNameFor(model => model.PayPeriod)</th>
+            <th>@Html.DisplayNameFor(model => model.Super)</th>
+            <th>@Html.DisplayNameFor(model => model.AnnualSalary)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+                <tr>
+                    <td>@employee.FirstName</td>
+                    <td>@employee.LastName</td>
+                    <td>@employee.PayPeriod</td>
+                    <td>@employee.Super</td>
+                    <td>@employee.AnnualSalary</td>
+                </tr>
+        }
+    </tbody>
+</table>
+}
+else
+{
+    <h3 class="display-5 text-secondary">Add employees</h3>
+}

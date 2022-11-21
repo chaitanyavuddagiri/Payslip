@@ -1,0 +1,67 @@
+﻿@model PayslipViewModel
+
+<div class="row">
+    <div class="col-6">
+        <div class="mb-2">
+            <h2 class="display-4">Employee</h2>
+        </div>
+        <div asp-validation-summary="ModelOnly"></div>
+        <form method="post">
+            <div class="p-3">
+                <label asp-for="Employee.FirstName"></label>
+                <input asp-for="Employee.FirstName" class="form-control" />
+                <span asp-validation-for="Employee.FirstName" class="text-danger"></span>
+            </div>
+            <div class="p-3">
+                <label asp-for="Employee.LastName"></label>
+                <input asp-for="Employee.LastName" class="form-control" />
+                <span asp-validation-for="Employee.LastName" class="text-danger"></span>
+            </div>
+            <div class="p-3">
+                <label asp-for="Employee.AnnualSalary"></label>
+                <input asp-for="Employee.AnnualSalary" class="form-control" />
+                <span asp-validation-for="Employee.AnnualSalary" class="text-danger"></span>
+            </div>
+            <div class="p-3">
+                <label asp-for="Employee.Super"></label>
+                <input asp-for="Employee.Super" class="form-control" />
+                <span asp-validation-for="Employee.Super" class="text-danger"></span>
+            </div>
+            <div class="p-3">
+                <label asp-for="Employee.PayPeriod"></label>
+                @Html.DropDownListFor(e => e.Employee.PayPeriod, new SelectList(Enum.GetValues(typeof(Months))), "select month", new { @class = "form-control" })
+                @*<input asp-for="PayPeriod" class="form-control" />*@
+                <span asp-validation-for="Employee.PayPeriod" class="text-danger"></span>
+            </div>
+            <button type="submit" value="Employee" name="submit" class="btn btn-primary">Add Employee</button>
+        </form>
+    </div>
+    <div class="col-6">
+        @if (Model.Employees != null)
+        {
+            <div class="mb-2">
+                <h2 class="display-4">Employee List</h2>
+            </div>
+            <hr/>
+            <partial name="_Employee" model="@Model.Employees" />
+            <form method="post">
+                <button type="submit" value="Payslip" name="submit" class="btn btn-primary">Generate Payslip</button>
+            </form>
+        }
+    </div>
+    <div class="row">
+        @if (Model.EmployeePayslips != null)
+        {
+            <h2 class="text-primary display-4">Payslip</h2>
+            <hr />
+            <partial name="_Payslip" model="@Model.EmployeePayslips" />
+        }
+    </div>
+</div>
+
+
+@section Scripts {
+    @{ 
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}

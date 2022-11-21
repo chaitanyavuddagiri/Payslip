@@ -1,0 +1,47 @@
+﻿@model EmployeePayslip
+
+<div>
+    <h2 class="text-primary display-4">Payslip</h2>
+    <hr />
+    <table class="table table-bordered table-striped">
+        <tbody>
+            <tr>
+                <th>
+                    <label asp-for="FullName"></label>
+                </th>
+                <td>@Model.FullName</td>
+            </tr>
+            <tr>
+                <th>
+                    <label asp-for="PayPeriod"></label>
+                </th>
+                <td>@Model.PayPeriod</td>
+            </tr>
+            <tr>
+                <th>
+                    <label asp-for="GrossIncome"></label>
+                </th>
+                <td>@Model.GrossIncome</td>
+            </tr>
+            <tr>
+                <th>
+                    <label asp-for="IncomeTax"></label>
+                </th>
+                <td>@Model.IncomeTax</td>
+            </tr>
+            <tr>
+                <th>
+                    <label asp-for="NetIncome"></label>
+                </th>
+                <td>@Model.NetIncome</td>
+            </tr>
+            <tr>
+                <th>
+                    <label asp-for="Super"></label>
+                </th>
+                <td>@Model.Super</td>
+            </tr>
+        </tbody>
+    </table>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Back to form</a>
+</div>
